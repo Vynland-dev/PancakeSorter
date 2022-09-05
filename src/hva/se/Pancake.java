@@ -6,6 +6,7 @@ public class Pancake {
 
 
     public Pancake(double diameter) {
+        if (diameter <= 0) throw new IllegalArgumentException("Diameter can not be zero or negative");
         this.diameter = diameter;
     }
 
