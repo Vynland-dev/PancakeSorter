@@ -17,14 +17,14 @@ import java.util.Stack;
 
 public class PancakeTest {
 
-    Plate<Pancake> plate = new Plate<>();
+    Plate<Pancake> plate = new Plate<>(new Pancake(1));
 
     @BeforeEach
     void setUp() {
-        plate.push(new Pancake(5));
-        plate.push(new Pancake(1));
         plate.push(new Pancake(2));
         plate.push(new Pancake(3));
+        plate.push(new Pancake(4));
+        plate.push(new Pancake(5));
     }
 
     @Test
@@ -45,5 +45,19 @@ public class PancakeTest {
         } catch (IllegalArgumentException ignored) {
         }
     }
+
+    @Test
+    void testMaxLimitElements() {
+        try {
+            for (int i = 6; i <= 30; i++) {
+                plate.push(new Pancake(i+1));
+
+            }
+            Assert.fail("ArrayIndexOutOfBoundsException not thrown");
+        } catch (ArrayIndexOutOfBoundsException ignored) {
+
+        }
+    }
+
 
 }
