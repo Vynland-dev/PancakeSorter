@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.testng.Assert;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 
@@ -31,6 +33,16 @@ public class PancakeTest {
             plate.push(new Pancake(-2));
             Assert.fail("IllegalArgumentException not thrown");
         } catch (IllegalArgumentException ignored){
+        }
+    }
+
+    @Test
+    void testNoRecurringElement() {
+        try {
+            plate.push(new Pancake(4));
+            plate.push(new Pancake(4));
+            Assert.fail("IllegalArgumentException not thrown");
+        } catch (IllegalArgumentException ignored) {
         }
     }
 
