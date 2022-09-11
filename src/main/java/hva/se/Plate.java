@@ -1,20 +1,19 @@
 package hva.se;
 
-import java.util.ArrayDeque;
+import java.util.ArrayList;
 
 
-
-public class Plate<E> extends ArrayDeque<Pancake> {
+public class Plate<E> extends ArrayList<Pancake> {
 
     public Plate(Pancake pancake) {
         super();
-        this.push(pancake);
+        this.add(pancake);
     }
 
     private boolean isValid(Pancake pancake) throws IllegalArgumentException, ArrayIndexOutOfBoundsException {
         int maxSize = 25;
 
-        if (this.size() > maxSize){
+        if (this.size() > maxSize) {
             throw new ArrayIndexOutOfBoundsException("Number of elements exceed limit (25)");
         }
 
@@ -27,14 +26,12 @@ public class Plate<E> extends ArrayDeque<Pancake> {
     }
 
 
-    public void addFirst(Pancake pancake) {
-        if (isValid(pancake)) super.addFirst(pancake);
-    }
-
-    public void addLast(Pancake pancake) {
-        if (isValid(pancake)) super.addLast(pancake);
+    public boolean add(Pancake pancake) {
+        if (isValid(pancake)) super.add(pancake);
+        return true;
     }
 
 
-
+    public void pancakeSort() {
+    }
 }

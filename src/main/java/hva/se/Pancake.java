@@ -1,6 +1,6 @@
 package hva.se;
 
-public class Pancake {
+public class Pancake implements Comparable<Pancake>{
 
     private final double diameter;
 
@@ -12,5 +12,10 @@ public class Pancake {
 
     public double getDiameter() {
         return diameter;
+    }
+
+    @Override
+    public int compareTo(Pancake other) {
+        return Double.compare(diameter, other.diameter);
     }
 }
