@@ -33,5 +33,6 @@ public class Plate<E> extends ArrayList<Pancake> {
 
 
     public void pancakeSort() {
+
     }
 }

@@ -7,15 +7,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 
+import java.util.stream.Collectors;
+
 public class PancakeTest {
 
     Plate<Pancake> plate = new Plate<>(new Pancake(1));
 
     @BeforeEach
     void setUp() {
-        plate.add(new Pancake(2));
-        plate.add(new Pancake(3));
         plate.add(new Pancake(4));
+        plate.add(new Pancake(3));
+        plate.add(new Pancake(2));
         plate.add(new Pancake(5));
     }
 
@@ -31,8 +33,8 @@ public class PancakeTest {
     @Test
     void testNoRecurringElement() {
         try {
-            plate.add(new Pancake(4));
-            plate.add(new Pancake(4));
+            plate.add(new Pancake(6));
+            plate.add(new Pancake(6));
             Assert.fail("IllegalArgumentException not thrown");
         } catch (IllegalArgumentException ignored) {
         }
@@ -53,6 +55,8 @@ public class PancakeTest {
 
     @Test
     public void testIsPlateSorted() {
+        plate.pancakeSort();
+        Assert.assertEquals(plate, plate.stream().sorted().toList());
     }
 
 
